@@ -1,0 +1,21 @@
+{
+  "name": "apollo-react-minimal-vanilla-example-server",
+  "private": true,
+  "dependencies": {
+    "apollo-datasource": "^0.3.1",
+    "apollo-server": "^2.4.2",
+    "graphql": "^14.1.1",
+    "sequelize": "^4.42.0",
+    "sqlite3": "^4.0.6"
+  },
+  "scripts": {
+    "db:migrate": "db-migrate up",
+    "db:seed": "node src/db/scripts/seeds.js",
+    "start": "node src/index.js localhost 4000"
+  },
+  "devDependencies": {
+    "@types/graphql": "14.0.1",
+    "db-migrate": "^0.11.5",
+    "db-migrate-sqlite3": "^0.4.0"
+  }
+}
