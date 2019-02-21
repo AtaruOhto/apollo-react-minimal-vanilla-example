@@ -4,7 +4,6 @@ const resolvers = require('./resolver')
 const User = require('./db/models/User');
 const { getDB } = require('./db')
 
-
 const boot = async () => {
   const store = await getDB();
 
@@ -28,4 +27,3 @@ const boot = async () => {
 }
 
 boot();
-

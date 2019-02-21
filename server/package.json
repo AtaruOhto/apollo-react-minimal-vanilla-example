@@ -9,13 +9,10 @@
     "sqlite3": "^4.0.6"
   },
   "scripts": {
-    "db:migrate": "db-migrate up",
-    "db:seed": "node src/db/scripts/seeds.js",
+    "db:initialize": "node src/db/scripts/initialize.js",
     "start": "node src/index.js localhost 4000"
   },
   "devDependencies": {
-    "@types/graphql": "14.0.1",
-    "db-migrate": "^0.11.5",
-    "db-migrate-sqlite3": "^0.4.0"
+    "@types/graphql": "14.0.1"
   }
 }

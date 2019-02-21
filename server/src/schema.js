@@ -1,9 +1,9 @@
 const { gql } = require("apollo-server");
-// Construct a schema, using GraphQL schema language
+
 const typeDefs = gql`
   type Query {
-    hello: String
-    users: [User]
+    hello: String!
+    users: [User]!
   }
 
   type Mutation {
@@ -12,7 +12,7 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    name: String
+    name: String!
     createdAt: String
     updatedAt: String
   }
