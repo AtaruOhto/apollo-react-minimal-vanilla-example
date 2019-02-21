@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
-import { ApolloProvider as ApolloHooksProvider, useQuery } from "react-apollo-hooks";
+import { ApolloProvider as ApolloHooksProvider, useMutation, useQuery } from "react-apollo-hooks";
 import { appClient } from "./graphql/client";
-import { GET_USER } from "./graphql/tags/getUser";
+import { GET_USER, CREATE_USER } from "./graphql/tags/getUser";
 
 const UserList = () => {
   const { data, error, loading } = useQuery(GET_USER);
@@ -24,9 +24,35 @@ const UserList = () => {
   );
 };
 
+const UserInput = () => {
+  const [state, setState] = useState("");
+  
+  const createUser = useMutation(CREATE_USER, {
+    update: (proxy, { data: { createUser } }) => {
+      proxy.writeQuery({ query: GET_USER,  data: {
+        users: createUser,
+      }, });
+    },
+    variables: { name: state },
+  });
+
+  const onChange = (e) => {
+    setState(e.currentTarget.value);
+  }
+  
+  return (
+    <div>
+      <input type="text" value={state} onChange={onChange} />
+      <button onClick={createUser}>Add</button>
+    </div>
+  )
+
+}
+
 export const App = () => (
   <ApolloProvider client={appClient}>
     <ApolloHooksProvider client={appClient}>
+      <UserInput />
       <UserList/>
     </ApolloHooksProvider>
   </ApolloProvider>

@@ -13,8 +13,7 @@ Minimal example of Apollo Server with vanilla JavaScript.
 
 ```
 npm install
-npm run db:migrate
-npm run db:seed
+npm run db:initialize
 npm run start
 ```
 

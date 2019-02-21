@@ -1,4 +1,4 @@
-const { getDB } = require('../../db');
+const { getDB } = require('..');
 
 (async() => {
   const db = await getDB();

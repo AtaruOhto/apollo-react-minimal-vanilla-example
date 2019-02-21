@@ -1,4 +1,3 @@
-// Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
     /*
@@ -30,8 +29,8 @@ const resolvers = {
       }
     */
     createUser: async (_, { name }, { dataSources }) => {
-      const user = await dataSources.User.findOrCreate({where: { name }});
-      return user[0].dataValues
+      await dataSources.User.findOrCreate({where: { name }});
+      return await dataSources.User.findAll();
     },
   },
 };
