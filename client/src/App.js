@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider, useMutation, useQuery } from "react-apollo-hooks";
 import { appClient } from "./graphql/client";
-import { GET_USER, CREATE_USER } from "./graphql/tags/getUser";
+import { GET_USERS, CREATE_USER } from "./graphql/tags/getUser";
 
 const UserList = () => {
-  const { data, error, loading } = useQuery(GET_USER);
+  const { data, error, loading } = useQuery(GET_USERS);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -29,7 +29,7 @@ const UserInput = () => {
   
   const createUser = useMutation(CREATE_USER, {
     update: (proxy, { data: { createUser } }) => {
-      proxy.writeQuery({ query: GET_USER,  data: {
+      proxy.writeQuery({ query: GET_USERS,  data: {
         users: createUser,
       }, });
     },
